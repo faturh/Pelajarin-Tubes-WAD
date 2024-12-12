@@ -1,0 +1,24 @@
+1. buka prompt control + tab
+
+------------------buat bikin admin baru
+
+use Illuminate\Support\Facades\Hash;
+
+$user = \App\Models\User::create([
+    'name' => 'Admin', // Nama pengguna
+    'email' => 'admin@example.com', // Email pengguna
+    'password' => Hash::make('new_password123'), // Password terenkripsi menggunakan bcrypt
+    'role' => 'admin', // Tentukan role sebagai admin
+]);
+------------------------------------
+
+
+
+-----------buat ganti pw-----------------
+php artisan tinker
+
+> $user = \App\Models\User::find(12); // Replace with the actual user ID
+> $user->password = bcrypt('new_password123');
+> $user->save();
+
+

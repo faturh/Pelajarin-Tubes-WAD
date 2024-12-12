@@ -1,0 +1,101 @@
+1. Folder app
+Berisi logika aplikasi, model, dan pengaturan penting lainnya.
+
+app/Console
+Tempat untuk membuat command line script khusus (misalnya perintah artisan kustom). File seperti Kernel.php juga mengatur perintah yang dijalankan secara otomatis (scheduled tasks).
+
+app/Exceptions
+Tempat mengatur custom exception atau memodifikasi penanganan kesalahan aplikasi.
+
+app/Http
+
+Controllers: Menyimpan semua controller untuk menangani logika HTTP.
+Middleware: Menyimpan middleware, yaitu logika yang berjalan sebelum atau sesudah permintaan HTTP diterima atau direspon.
+Requests: Tempat menyimpan validasi permintaan HTTP kustom.
+app/Models
+Menyimpan semua model Eloquent, yang digunakan untuk berinteraksi dengan database.
+
+app/Providers
+Tempat mendefinisikan service provider untuk mengatur binding dan konfigurasi layanan.
+
+2. Folder bootstrap
+Berisi file yang memulai aplikasi Laravel.
+
+File app.php:
+Mem-bootstrapping semua komponen utama Laravel seperti layanan, konfigurasi, dan provider.
+3. Folder config
+Berisi semua file konfigurasi aplikasi, seperti:
+
+app.php: Mengatur nama aplikasi, URL dasar, dan lokal default.
+database.php: Mengatur koneksi database (MySQL, SQLite, dsb.).
+mail.php: Konfigurasi untuk layanan email.
+filesystems.php: Mengatur pengelolaan file dan disk (lokal, cloud, dsb.).
+auth.php: Mengatur mekanisme autentikasi seperti guard dan provider.
+Gunakan file config untuk memudahkan perubahan tanpa perlu menyentuh kode utama.
+
+4. File .env
+Berisi pengaturan lingkungan (environment) aplikasi. File ini tidak digunakan dalam produksi, tetapi untuk konfigurasi lokal atau server tertentu.
+
+Contoh Pengaturan:
+env
+Copy code
+APP_NAME=Laravel
+APP_ENV=local
+APP_KEY=base64:...
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nama_database
+DB_USERNAME=root
+DB_PASSWORD=password
+File ini mempermudah pengelolaan konfigurasi yang berbeda di berbagai lingkungan (misalnya pengaturan server lokal berbeda dari server produksi).
+
+5. Folder database
+Berisi semua yang terkait dengan database.
+
+migrations/: Menyimpan file migrasi untuk membuat, mengubah, atau menghapus tabel database.
+factories/: Digunakan untuk membuat data palsu (dummy data) selama pengujian.
+seeders/: Untuk memasukkan data awal ke dalam database.
+6. Folder public
+Merupakan folder utama untuk file publik, seperti:
+
+index.php: Merupakan entry point aplikasi Laravel.
+Assets: Tempat menyimpan file CSS, JavaScript, dan gambar.
+7. Folder resources
+Berisi file untuk tampilan dan sumber daya lainnya.
+
+views/: Tempat menyimpan file Blade templates yang digunakan untuk menampilkan antarmuka pengguna.
+lang/: Menyimpan file untuk localization aplikasi.
+css/ dan js/: Menyimpan sumber daya CSS dan JavaScript sebelum dikompilasi dengan Laravel Mix.
+8. Folder routes
+Berisi semua file terkait rute aplikasi.
+
+web.php: Mendefinisikan rute untuk aplikasi berbasis web.
+api.php: Mendefinisikan rute untuk API.
+console.php: Mendefinisikan perintah Artisan.
+channels.php: Digunakan untuk kanal berbasis broadcast.
+9. Folder storage
+Berisi file sementara, log, dan cache.
+
+app/: Menyimpan file sementara atau file aplikasi.
+logs/: Menyimpan log aplikasi.
+framework/: Menyimpan cache, sesi, dan file lainnya yang digunakan framework.
+10. Folder tests
+Berisi semua file pengujian aplikasi.
+
+Feature/: Pengujian fitur yang lebih kompleks (misalnya beberapa lapisan logika).
+Unit/: Pengujian unit untuk memeriksa fungsi individu.
+11. Folder vendor
+Berisi semua package dan dependensi aplikasi yang diinstal melalui Composer.
+
+Jangan pernah mengedit file di folder ini.
+
+Alur Kerja Laravel Secara Umum
+Permintaan Masuk:
+Rute didefinisikan di routes/.
+Middleware di app/Http/Middleware diproses.
+Controller:
+Logika ditangani di app/Http/Controllers.
+Jika diperlukan data, akses model di app/Models.
+View:
+Tampilkan antarmuka dari resources/views.
