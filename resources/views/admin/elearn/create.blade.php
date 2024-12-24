@@ -1,6 +1,6 @@
-@extends('layouts.elearn_layout')
+@extends('layouts.app')
 
-@section('content2')
+@section('content')
 <div class="container">
     <h1>Create New E-Learn</h1>
     <form action="{{ route('admin.elearning.store') }}" method="POST" enctype="multipart/form-data">

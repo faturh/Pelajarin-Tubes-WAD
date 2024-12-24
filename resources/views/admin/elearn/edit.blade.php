@@ -1,19 +1,25 @@
-@extends('layouts.elearn_layout')
+@extends('layouts.app')
 
-@section('content2')
+@section('content')
+
 <div class="container">
+
     <h1>Edit E-Learning</h1>
-    <form action="{{ route('admin.elearning.update', $elearn) }}" method="POST" enctype="multipart/form-data">
-        @csrf
+
+    <form action="{{ route('admin.elearning.update', $elearn->ElearnId) }}" method="POST" enctype="multipart/form-data">
         @method('PUT')
+        @csrf
+
         <div class="form-group">
             <label for="Title">Title</label>
             <input type="text" name="Title" id="Title" class="form-control" value="{{ $elearn->Title }}" required>
         </div>
+
         <div class="form-group">
             <label for="Link">Link</label>
             <input type="url" name="Link" id="Link" class="form-control" value="{{ $elearn->Link }}" required>
         </div>
+
         <div class="form-group">
             <label for="Image">Image</label>
             <input type="file" name="Image" id="Image" class="form-control">
@@ -23,19 +29,16 @@
                 </div>
             @endif
         </div>
+
         <div class="form-group">
             <label for="Publisher">Publisher</label>
             <input type="text" name="Publisher" id="Publisher" class="form-control" value="{{ $elearn->Publisher }}" required>
         </div>
-        <div class="form-group">
-            <label for="Description">Description</label>
-            <textarea name="Description" id="Description" class="form-control">{{ $elearn->Description }}</textarea>
-        </div>
-        <div class="form-group">
-            <label for="ended_at">Ended At</label>
-            <input type="datetime-local" name="ended_at" id="ended_at" class="form-control" value="{{ $elearn->ended_at }}">
-        </div>
-        <button type="submit" class="btn btn-success mt-3">Update</button>
+
+        <button type="submit" class="btn btn-primary">Update E-Learning</button>
     </form>
+
+
 </div>
+
 @endsection

@@ -1,6 +1,6 @@
-@extends('layouts.elearn_layout')
+@extends('layouts.app')
 
-@section('content2')
+@section('content')
 <div class="container">
     <h1>E-Learning List</h1>
     <a href="{{ route('admin.elearning.create') }}" class="btn btn-primary mb-3">Add E-Learning</a>
@@ -39,7 +39,7 @@
                     <td>{{ $elearn->Description ?? 'No Description' }}</td>
                     <td>
                         <a href="{{ route('admin.elearning.edit', $elearn) }}" class="btn btn-warning">Edit</a>
-                        <form action="{{ route('admin.elearning.destroy', $elearn) }}" method="POST" style="display:inline;">
+                        <form action="{{ route('admin.elearning.destroy', $elearn->ElearnId) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
