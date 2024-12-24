@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,15 +17,14 @@
       <div class="flex h-16 items-center justify-between">
         <div class="flex items-center">
           <div class="shrink-0">
-            <img class="size-8" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+            <img class="size-16" src="/storage/General/pelajarinlogo.png" alt="Your Company">
           </div>
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="main" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Dashboard</a>
-              <a href="elearn" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">E-Learning</a>
-              <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Projects</a>
-              <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Calendar</a>
+              <a href="main" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white" aria-current="page">Skill-Learning</a>
+              <a href="elearn" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">E-Learning</a>
+              <a href="jobseaker" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Jobseaker</a>
               <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Reports</a>
             </div>
           </div>
@@ -80,7 +81,6 @@
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     Sign out
                   </a>
-
               </div>
             </div>
           </div>
@@ -109,8 +109,8 @@
     <div x-show="isOpen" class="md:hidden" id="mobile-menu">
       <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="main" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Dashboard</a>
-        <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">E-Learning</a>
+        <a href="main" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Skill-Learning</a>
+        <a href="elearn" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">E-Learning</a>
         <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Projects</a>
         <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Calendar</a>
         <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Reports</a>
@@ -133,47 +133,49 @@
           </button>
         </div>
         <div class="mt-3 space-y-1 px-2">
-          <a href="yourprofile" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Your Profile</a>
+          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Your Profile</a>
           <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Settings</a>
-          <a href="logout" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Sign out</a>
+          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Sign out</a>
         </div>
       </div>
     </div>
   </nav>
 
-  <header class="bg-white shadow">
+  <!-- <header class="bg-white shadow">
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-      <h1 class="text-3xl font-bold tracking-tight text-gray-900">Dashboard</h1>
+      <h1 class="text-3xl font-bold tracking-tight text-gray-900">E-Learning Page</h1>
     </div>
-  </header>
+  </header> -->
   <main>
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
       <!-- Your content -->
       <div class="container mx-auto mt-5">
-          <h1 class="text-2xl font-bold mb-4">Courses</h1>
+          <h1 class="text-2xl font-bold mb-4">E-learning</h1>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          @foreach ($courses as $course)
+              @foreach ($elearns as $elearn)
               <div class="bg-white shadow-lg rounded-lg overflow-hidden">
                   <img
-                      src="{{ $course->image ?? 'https://via.placeholder.com/300x150' }}" 
-                      alt="{{ $course->Title }}" 
+                       src="{{ asset('storage/' . $elearn->Image) }}" alt="elearn Image"
+                      alt="{{ $elearn->Title }}" 
                       class="w-full h-40 object-cover"
                   />
                   <div class="p-4">
-                      <h2 class="text-lg font-semibold text-gray-800">{{ $course->Title }}</h2>
-                      <p class="text-sm text-gray-500 mb-2">Publisher: {{ $course->Publisher }}</p>
-                      <p class="text-sm text-gray-700 mb-4">{{ Str::limit($course->Description, 100) }}</p>
-                      <a 
-                          href="{{ $course->Link }}" 
-                          class="inline-block px-6 py-2.5 bg-blue-500 text-white font-medium text-sm leading-tight uppercase rounded shadow-md hover:bg-blue-600 transition"
-                          target="_blank"
-                      >
+                      <!-- Title -->
+                      <h2 class="text-lg font-semibold text-gray-800">{{ $elearn->Title }}</h2>
+
+                      <!-- Publisher -->
+                      <p class="text-sm text-gray-500 mb-2">Publisher: {{ $elearn->Publisher }}</p>
+
+                      <!-- Description (limited to 100 characters) -->
+                      <p class="text-sm text-gray-700 mb-4">{{ Str::limit($elearn->Description, 100) }}</p>
+
+                      <!-- Learn More Button -->
+                      <a href="{{ route('halaman_elearn', $elearn->ElearnId) }}" target="_blank" class="btn btn-info text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-md">
                           Learn More
                       </a>
                   </div>
               </div>
-          @endforeach
-
+              @endforeach
           </div>
       </div>
 
@@ -185,3 +187,4 @@
 
 </body>
 </html>
+

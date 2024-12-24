@@ -9,12 +9,12 @@ class RegisterController extends Controller
 {
     public function showRegisterForm()
     {
-        return view('register');
+        return view('akses_Awal.register');
     }
 
     public function register(Request $request)
     {
-        $request->validate([
+        $request->validate([ //// syarat
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email',
             'password' => 'required|string|min:6',

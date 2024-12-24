@@ -16,15 +16,14 @@
       <div class="flex h-16 items-center justify-between">
         <div class="flex items-center">
           <div class="shrink-0">
-            <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+            <img class="size-16" src="/storage/General/pelajarinlogo.png" alt="Your Company">
           </div>
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
-              <a href="main" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Dashboard</a>
-              <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Team</a>
-              <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Projects</a>
-              <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Calendar</a>
-              <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Reports</a>
+                <a href="main" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Skill-Learning</a>
+                <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">E-Learning</a>
+                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Job Seeker</a>
+                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Reports</a>
             </div>
           </div>
         </div>
@@ -65,29 +64,49 @@
   <!-- Main Content -->
   <main>
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-      <div class="bg-white shadow sm:rounded-lg">
-        <div class="px-4 py-5 sm:p-6">
-          <h2 class="text-lg font-medium leading-6 text-gray-900">Personal Information</h2>
-          <div class="mt-5">
-            <dl>
-              <div class="sm:grid sm:grid-cols-3 sm:gap-4">
-                <dt class="text-sm font-medium text-gray-500">Full Name</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Tom Cook</dd>
-              </div>
-              <div class="sm:grid sm:grid-cols-3 sm:gap-4 mt-4">
-                <dt class="text-sm font-medium text-gray-500">Email Address</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">tom@example.com</dd>
-              </div>
-              <div class="sm:grid sm:grid-cols-3 sm:gap-4 mt-4">
-                <dt class="text-sm font-medium text-gray-500">Phone</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">(555) 123-4567</dd>
-              </div>
-            </dl>
-          </div>
+        <div class="bg-white shadow sm:rounded-lg">
+            <div class="px-4 py-5 sm:p-6">
+                <h2 class="text-lg font-medium leading-6 text-gray-900">Personal Information</h2>
+                <div class="mt-5">
+                    <dl>
+                        <div class="sm:grid sm:grid-cols-3 sm:gap-4">
+                            <dt class="text-sm font-medium text-gray-500">Full Name</dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                {{ $user->name }}
+                            </dd>
+                        </div>
+                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 mt-4">
+                            <dt class="text-sm font-medium text-gray-500">Email Address</dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                {{ $user->email }}
+                            </dd>
+                        </div>
+                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 mt-4">
+                            <dt class="text-sm font-medium text-gray-500">Role</dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                {{ ucfirst($user->role) }}
+                            </dd>
+                        </div>
+                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 mt-6">
+                            <dt class="text-sm font-medium text-gray-500">Bio</dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                {{ ucfirst($user->bio ?? 'Belum ada bio yang ditambahkan') }}
+                            </dd>
+                        </div>
+                        
+                        <div class="sm:grid sm:grid-cols-8 sm:gap-8 mt-8 flex">
+                            <a href="#" target="_blank" class="btn btn-info text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-md ml-auto">
+                                Edit Profile
+                            </a>
+                        </div>
+                    </dl>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </main>
+</main>
+
+
 </div>
 
 </body>

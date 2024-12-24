@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
-    <h1>E-Learning List</h1>
-    <a href="{{ route('admin.elearning.create') }}" class="btn btn-primary mb-3">Add E-Learning</a>
+    <h1>Jobseaker List</h1>
+    <a href="{{ route('admin.jobseaker.create') }}" class="btn btn-primary mb-3">Add Jobseaker</a>
 
 
     @if ($message = Session::get('success'))
@@ -23,23 +23,23 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($elearn as $elearn)
+            @foreach ($jobseaker as $jobseaker)
                 <tr>
-                    <td>{{ $elearn->ElearnId }}</td>
-                    <td>{{ $elearn->Title }}</td>
+                    <td>{{ $jobseaker->JobseakerId }}</td>
+                    <td>{{ $jobseaker->Title }}</td>
                     <td>
-                        @if ($elearn->Image)
-                            <img src="{{ asset('storage/' . $elearn->Image) }}" alt="E-Learn Image" style="width: 100px;">
+                        @if ($jobseaker->Image)
+                            <img src="{{ asset('storage/' . $jobseaker->Image) }}" alt="Jobseaker Image" style="width: 100px;">
                         @else
                             No Image
                         @endif
                     </td>
-                    <td><a href="{{ $elearn->Link }}" target="_blank">{{ $elearn->Link }}</a></td>
-                    <td>{{ $elearn->Publisher }}</td>
-                    <td>{{ $elearn->Description ?? 'No Description' }}</td>
+                    <td><a href="{{ $jobseaker->Link }}" target="_blank">{{ $jobseaker->Link }}</a></td>
+                    <td>{{ $jobseaker->Publisher }}</td>
+                    <td>{{ $jobseaker->Description ?? 'No Description' }}</td>
                     <td>
-                        <a href="{{ route('admin.elearning.edit', $elearn) }}" class="btn btn-warning">Edit</a>
-                        <form action="{{ route('admin.elearning.destroy', $elearn->ElearnId) }}" method="POST" style="display:inline;">
+                        <a href="{{ route('admin.jobseaker.edit', $jobseaker) }}" class="btn btn-warning">Edit</a>
+                        <form action="{{ route('admin.jobseaker.destroy', $jobseaker->JobseakerId) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>

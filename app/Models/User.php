@@ -10,11 +10,10 @@ class User extends Authenticatable implements AuthenticatableContract
 {
     use Notifiable;
 
-    // Jika tabel Anda menggunakan nama berbeda
-    protected $table = 'users'; // Sesuaikan jika nama tabel berbeda
+    protected $table = 'users'; // nama tebel
 
     protected $fillable = [
-        'name', 'email', 'password','role',
+        'name', 'email', 'password','role','icon','bio',
     ];
 
     protected $hidden = [

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -20,19 +21,8 @@ class CourseController extends Controller
     {
         return view('admin.courses.create');
     }
-
-    // Menyimpan course baru
-    // public function store(Request $request)
-    // {
-    //     $request->validate([
-    //         'Title' => 'required',
-    //         'Link' => 'required|url',
-    //         'Publisher' => 'required',
-    //     ]);
-
-    //     Course::create($request->all());
-    //     return redirect()->route('admin.courses.index')->with('success', 'Course added successfully');
-    // }
+    
+   
     public function store(Request $request)
     {
         $request->validate([
@@ -60,18 +50,7 @@ class CourseController extends Controller
         return view('admin.courses.edit', compact('course'));
     }
 
-    // Memperbarui data course
-    // public function update(Request $request, Course $course)
-    // {
-    //     $request->validate([
-    //         'Title' => 'required',
-    //         'Link' => 'required|url',
-    //         'Publisher' => 'required',
-    //     ]);
-
-    //     $course->update($request->all());
-    //     return redirect()->route('admin.courses.index')->with('success', 'Course updated successfully');
-    // }
+   
     public function update(Request $request, Course $course)
         {
             $request->validate([

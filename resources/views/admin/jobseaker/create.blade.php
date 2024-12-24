@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
-    <h1>Create New E-Learn</h1>
-    <form action="{{ route('admin.elearning.store') }}" method="POST" enctype="multipart/form-data">
+    <h1>Create New Jobseaker</h1>
+    <form action="{{ route('admin.jobseaker.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="Title">Title</label>

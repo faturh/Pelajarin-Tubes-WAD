@@ -10,6 +10,6 @@ class Course_Get_Data_Controller extends Controller
     public function index()
     {
         $courses = Course_GetData::all(); // Mengambil semua data dari tabel courses_getdata
-        return view('main', compact('courses'));
+        return view('homepage.main', compact('courses'));
     }
 }
