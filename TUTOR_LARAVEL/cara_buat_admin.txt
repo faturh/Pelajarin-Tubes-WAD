@@ -1,5 +1,5 @@
 1. buka prompt control + tab
-
+2. ketik php artisan tinker
 ------------------buat bikin admin baru
 
 use Illuminate\Support\Facades\Hash;
