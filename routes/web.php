@@ -13,7 +13,7 @@ use App\Http\Controllers\Course_Get_Data_Controller;
 use App\Http\Controllers\Elearn_Get_Data_Controller;
 use App\Http\Controllers\Jobseaker_Get_Data_Controller;
 use App\Http\Middleware\CheckRole;
-use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\ProfileController;
 
 // Halaman Login Utama
 Route::get('/', function () {
@@ -65,6 +65,7 @@ Route::middleware(['auth', CheckRole::class . ':admin'])->prefix('admin')->name(
     Route::resource('courses', CourseController::class);
     Route::resource('elearning', ElearnController::class);
     Route::resource('jobseaker', JobseakerController::class);
+    Route::resource('sertifikat', JobseakerController::class);
 });
 
 
@@ -78,18 +79,37 @@ Route::middleware(['auth', CheckRole::class . ':user'])->group(function () {
     // jobseaker user
     Route::get('/jobseaker', [Jobseaker_Get_Data_Controller::class, 'index'])->name('jobseaker_main');
     Route::get('/Jobseaker/{id}', [Jobseaker_Get_Data_Controller::class, 'show'])->name('halaman_jobseaker');
+    // Sertifikat user
+    Route::get('/jobseaker', [Jobseaker_Get_Data_Controller::class, 'index'])->name('jobseaker_main');
+    Route::get('/Jobseaker/{id}', [Jobseaker_Get_Data_Controller::class, 'show'])->name('halaman_jobseaker');
 
     // User Profile
 
+    // User Profile Routes
+    // View profile
     Route::get('/yourprofile', function () {
         $user = Auth::user();
-        $userdata = "logikanya gimana";
-        return view('profile.yourprofile', compact('user',"userdata"));
+        return view('profile.yourprofile', compact('user'));
     })->name('profile.view');
+    
+    // Edit profile
+    Route::get('/yourprofile/edit', function () {
+        $user = Auth::user();
+        return view('profile.edit', compact('user'));
+    })->name('profile.edit');
+
+    // Update profile
+    Route::post('/yourprofile/update', [UserProfileController::class, 'update'])->name('profile.update');
+    
+    // Delete profile (optional, if you want to add delete functionality)
+    Route::delete('/yourprofile/delete', [UserProfileController::class, 'destroy'])->name('profile.delete');
+
+
+    // Profil pengguna
+    Route::get('/yourprofile', [ProfileController::class, 'index'])->name('profile.view');
+    Route::get('/yourprofile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/yourprofile/update', [ProfileController::class, 'update'])->name('profile.update');
 });
-
-
-
 
 // Rute Pendaftaran
 Route::get('/register', [RegisterController::class, 'showRegisterForm']);

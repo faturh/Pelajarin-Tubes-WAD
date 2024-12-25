@@ -35,12 +35,11 @@
               <a href="main" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white hover:scale-105 transition transform active:scale-95">Skill-Learning</a>
               <a href="elearn" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition transform active:scale-95">E-Learning</a>
               <a href="jobseaker" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition transform active:scale-95">Jobseaker</a>
-              <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition transform active:scale-95">Reports</a>
             </div>
           </div>
         </div>
 
-        <!-- User Profile Dropdown -->
+        <!-- User Profile Dropdown
         <div class="hidden md:block">
           <div class="ml-4 flex items-center md:ml-6">
             <div class="relative ml-3">
@@ -48,11 +47,32 @@
                 <button @click="isOpen = !isOpen" class="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" aria-haspopup="true">
                   <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
                 </button>
+              </div> -->
+
+              <div class="hidden md:block">
+          <div class="ml-4 flex items-center md:ml-6">
+            <div class="relative ml-3">
+              <div> 
+                <button type="button" @click="isOpen = !isOpen" class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                  <span class="absolute -inset-1.5"></span>
+                  <span class="sr-only">Open user menu</span>
+                  <!-- Ganti URL gambar profil dengan data dinamis -->
+                  <img class="h-8 w-8 rounded-full object-cover" src="{{ auth()->user()->profile_picture ? asset('storage/profile_pictures/' . auth()->user()->profile_picture) : asset('default-avatar.png') }}" alt="User Avatar">
+                </button>
               </div>
               <div x-show="isOpen" x-transition:enter="transition ease-out duration-150 transform" x-transition:leave="transition ease-in duration-100 transform" class="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none" role="menu">
                 <a href="yourprofile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Your Profile</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
-                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign out</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                   @csrf
+                </form>
+                  <a href="#" 
+                    class="block px-4 py-2 text-sm text-gray-700" 
+                    role="menuitem" 
+                    tabindex="-1" 
+                    id="user-menu-item-2" 
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Sign out
+                  </a>
               </div>
             </div>
           </div>
@@ -75,11 +95,9 @@
     <!-- Mobile Menu -->
     <div x-show="isOpen" class="md:hidden">
       <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-        <a href="main" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white transform active:scale-95">Skill-Learning</a>
-        <a href="elearn" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transform active:scale-95">E-Learning</a>
-        <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transform active:scale-95">Projects</a>
-        <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transform active:scale-95">Calendar</a>
-        <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transform active:scale-95">Reports</a>
+        <a href="main" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Skill-Learning</a>
+        <a href="elearn" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">E-Learning</a>
+        <a href="jobseaker" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">jobseaker</a>
       </div>
     </div>
   </nav>

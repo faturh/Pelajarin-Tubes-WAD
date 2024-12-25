@@ -43,10 +43,13 @@
                         <a class="nav-link" href="{{ route('admin.jobseaker.index') }}">Jobseaker</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Data-User</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-danger" href="{{ route('logout') }}">Logout</a>
+                        <!-- Tombol Logout di Sidebar -->
+                        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                            @csrf
+                            <button type="submit" class="nav-link text-danger" style="background: none; border: none; color: inherit; padding: 0;">
+                                Logout
+                            </button>
+                        </form>
                     </li>
                 </ul>
             </nav>
