@@ -1,147 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <title>Document</title>
+    <title>Jobseaker | Classic Learning Theme</title>
     <style>
-        /* Adding a subtle scale and shadow effect on hover */
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        /* Global Styling */
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #f9f9fc;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        nav {
+            background: linear-gradient(90deg, #457b9d, #1d3557);
+            color: #f1faee;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        h1,
+        h2 {
+            font-family: 'Georgia', serif;
+            font-weight: bold;
+        }
+
+        h1 {
+            color: #1d3557;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            color: #457b9d;
+            font-size: 1.3rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #457b9d;
+            color: #f1faee;
+            border-radius: 5px;
+            transition: all 0.3s ease;
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            background: #1d3557;
+            color: #a8dadc;
         }
 
-        .menu-button:hover {
-            transform: scale(1.1);
-            transition: transform 0.3s ease;
+        .card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .menu-transition {
-            transition: transform 0.3s ease, opacity 0.3s ease;
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background: #1d3557;
+            color: #f1faee;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        .profile-dropdown {
+            position: absolute;
+            right: 0;
+            z-index: 10;
         }
     </style>
 </head>
-<body>
-<div class="min-h-full">
-  <nav class="bg-gray-800" x-data="{ isOpen: false }">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex h-16 items-center justify-between">
-        <div class="flex items-center">
-          <div class="shrink-0">
-            <img class="size-16" src="/storage/General/pelajarinlogo.png" alt="Your Company">
-          </div>
-          <div class="hidden md:block">
-            <div class="ml-10 flex items-baseline space-x-4">
-              <a href="main" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white" aria-current="page">Skill-Learning</a>
-              <a href="elearn" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">E-Learning</a>
-              <a href="jobseaker" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">Jobseaker</a>
-            </div>
-          </div>
-        </div>
-        <div class="hidden md:block">
-          <div class="ml-4 flex items-center md:ml-6">
-            <div class="relative ml-3">
-              <div> 
-                <button type="button" @click="isOpen = !isOpen" class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                  <span class="absolute -inset-1.5"></span>
-                  <span class="sr-only">Open user menu</span>
-                  <!-- Ganti URL gambar profil dengan data dinamis -->
-                  <img class="h-8 w-8 rounded-full object-cover" src="{{ auth()->user()->profile_picture ? asset('storage/profile_pictures/' . auth()->user()->profile_picture) : asset('default-avatar.png') }}" alt="User Avatar">
-                </button>
-              </div>
-              <div x-show="isOpen"
-                x-transition:enter="transition ease-out duration-100 transform"
-                x-transition:enter-start="opacity-0 scale-95"
-                x-transition:enter-end="opacity-100 scale-100"
-                x-transition:leave="transition ease-in duration-75 transform"
-                x-transition:leave-start="opacity-100 scale-100"
-                x-transition:leave-end="opacity-0 scale-95" 
-                class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                <a href="yourprofile" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                   @csrf
-                </form>
-                <a href="#" 
-                    class="block px-4 py-2 text-sm text-gray-700" 
-                    role="menuitem" 
-                    tabindex="-1" 
-                    id="user-menu-item-2" 
-                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    Sign out
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="-mr-2 flex md:hidden">
-          <button @click="isOpen = !isOpen" type="button" class="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 menu-button">
-            <span class="absolute -inset-0.5"></span>
-            <span class="sr-only">Open main menu</span>
-            <svg  :class="{'hidden': isOpen, 'block': !isOpen }"
-            class="block size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-            <svg :class="{'block': isOpen, 'hidden': !isOpen }" 
-            class="hidden size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-    <div x-show="isOpen" class="md:hidden" id="mobile-menu">
-      <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-        <a href="main" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Skill-Learning</a>
-        <a href="elearn" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">E-learning</a>
-        <a href="jobseaker" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Jobseaker</a>
-      </div>
-      <div class="border-t border-gray-700 pb-3 pt-4">
-        <div class="flex items-center px-5">
-          <div class="shrink-0">
-            <img class="size-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-          </div>
-          <div class="ml-3">
-            <div class="text-base/5 font-medium text-white">Tom Cook</div>
-            <div class="text-sm font-medium text-gray-400">tom@example.com</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
 
-  <main>
-    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-      <div class="container mx-auto mt-5">
-        <h1 class="text-2xl font-bold mb-4">Jobseaker</h1>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            @foreach ($jobseakers as $jobseaker)
-            <div class="bg-white shadow-lg rounded-lg overflow-hidden card">
-                <img
-                    src="{{ asset('storage/' . $jobseaker->Image) }}" alt="jobseaker Image"
-                    class="w-full h-40 object-cover"
-                />
-                <div class="p-4">
-                    <h2 class="text-lg font-semibold text-gray-800">{{ $jobseaker->Title }}</h2>
-                    <p class="text-sm text-gray-500 mb-2">Publisher: {{ $jobseaker->Publisher }}</p>
-                    <p class="text-sm text-gray-700 mb-4">{{ Str::limit($jobseaker->Description, 100) }}</p>
-                    <a href="{{ route('halaman_jobseaker', $jobseaker->JobseakerId) }}" target="_blank" class="btn text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-md">
-                        Learn More
-                    </a>
+<body class="flex flex-col min-h-screen">
+    <div class="flex-grow">
+        <!-- Navigation -->
+        <nav class="shadow-md">
+            <div class="container mx-auto flex justify-between items-center px-4 py-4">
+                <div class="flex items-center">
+                    <img class="h-10" src="/storage/General/pelajarinlogo.png" alt="Pelajarin Logo">
+                    <div class="ml-8 space-x-4 hidden md:flex">
+                        <a href="main" class="text-lg hover:text-yellow-400">Skill-Learning</a>
+                        <a href="elearn" class="text-lg hover:text-yellow-400">E-Learning</a>
+                        <a href="jobseaker" class="text-lg font-semibold text-yellow-400">Jobseaker</a>
+                    </div>
+                </div>
+                <!-- Profile Section -->
+                <div class="hidden md:flex items-center" x-data="{ isOpen: false }">
+                    <div class="relative ml-3">
+                        <button @click="isOpen = !isOpen" type="button" class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                            <img class="h-8 w-8 rounded-full object-cover" src="{{ auth()->user()->profile_picture ? asset('storage/profile_pictures/' . auth()->user()->profile_picture) : asset('default-avatar.png') }}" alt="User Avatar">
+                        </button>
+                        <!-- Dropdown -->
+                        <div x-show="isOpen"
+                            x-transition:enter="transition ease-out duration-100 transform"
+                            x-transition:enter-start="opacity-0 scale-95"
+                            x-transition:enter-end="opacity-100 scale-100"
+                            x-transition:leave="transition ease-in duration-75 transform"
+                            x-transition:leave-start="opacity-100 scale-100"
+                            x-transition:leave-end="opacity-0 scale-95"
+                            class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5">
+                            <a href="yourprofile" class="block px-4 py-2 text-sm text-gray-700">Your Profile</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign out</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            @endforeach
-        </div>
-      </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="container mx-auto px-4 py-8">
+            <h1 class="text-left">Explore Jobseaker Opportunities</h1>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+                @foreach ($jobseakers as $jobseaker)
+                <div class="card">
+                    <img src="{{ asset('storage/' . $jobseaker->Image) }}" alt="{{ $jobseaker->Title }}" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <h2 class="text-lg font-bold">{{ $jobseaker->Title }}</h2>
+                        <p class="text-sm text-gray-500">Publisher: {{ $jobseaker->Publisher }}</p>
+                        <p class="text-sm text-gray-700 mt-2">{{ Str::limit($jobseaker->Description, 100) }}</p>
+                        <a href="{{ route('halaman_jobseaker', $jobseaker->JobseakerId) }}" target="_blank" class="btn mt-4">Learn More</a>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </main>
     </div>
-  </main>
-</div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Pelajarin. All Rights Reserved.</p>
+    </footer>
 </body>
+
 </html>

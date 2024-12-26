@@ -140,6 +140,14 @@
             <img src="https://via.placeholder.com/50" alt="Promo 3">
             <p>Join a vibrant community of learners and professionals.</p>
         </div>
+        <div class="promo-item">
+            <img src="https://via.placeholder.com/50" alt="Promo 4">
+            <p>Gain lifetime access to courses and materials.</p>
+        </div>
+        <div class="promo-item">
+            <img src="https://via.placeholder.com/50" alt="Promo 5">
+            <p>Earn certificates that boost your career and resume.</p>
+        </div>
     </section>
 </body>
 </html>
