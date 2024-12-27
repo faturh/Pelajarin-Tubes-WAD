@@ -36,7 +36,7 @@
                     </a>
                 </p>
             @else
-                <p class="text-muted">No certificate available.</p>
+                <p class="text-muted">No certificate availables.</p>
             @endif
         </div>
     </div>
