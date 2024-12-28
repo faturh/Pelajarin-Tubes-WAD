@@ -18,8 +18,9 @@ class Elearn extends Model
         'Publisher',
         'Description',
         'Image',
+        'Certificate',
         'ended_at',
-    ];
+    ];    
     
 
     // Timestamps diaktifkan untuk mendukung created_at dan updated_at

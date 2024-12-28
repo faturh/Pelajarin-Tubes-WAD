@@ -34,7 +34,13 @@
             <label for="Publisher">Publisher</label>
             <input type="text" name="Publisher" id="Publisher" class="form-control" value="{{ $elearn->Publisher }}" required>
         </div>
-
+        <div class="mb-3">
+        <label for="Certificate" class="form-label">Certificate (PDF)</label>
+        <input type="file" class="form-control" id="Certificate" name="Certificate" accept=".pdf">
+        @error('Certificate')
+            <div class="text-danger">{{ $message }}</div>
+        @enderror
+         </div>
         <button type="submit" class="btn btn-primary">Update E-Learning</button>
     </form>
 
