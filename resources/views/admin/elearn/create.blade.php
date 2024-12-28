@@ -29,7 +29,15 @@
             <label for="ended_at">Ended At</label>
             <input type="datetime-local" name="ended_at" id="ended_at" class="form-control">
         </div>
+        <div class="mb-3">
+        <label for="Certificate" class="form-label">Certificate (PDF)</label>
+        <input type="file" class="form-control" id="Certificate" name="Certificate" accept=".pdf">
+        @error('Certificate')
+            <div class="text-danger">{{ $message }}</div>
+        @enderror
+         </div>
         <button type="submit" class="btn btn-primary mt-3">Create</button>
     </form>
 </div>
+
 @endsection

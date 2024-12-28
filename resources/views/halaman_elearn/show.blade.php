@@ -1,6 +1,6 @@
-@extends('layouts.newtab_elearn')
+@extends('layouts.newtab_elearn')  
 
-@section('content')
+@section('content') 
 <div class="container my-5">
     <div class="card shadow-sm">
         <div class="card-body">
@@ -16,18 +16,28 @@
 
             <p class="text-muted"><strong>Publisher:</strong> {{ $elearn->Publisher }}</p>
             <p>
-                <strong>Link:</strong> 
+                <strong>Link:</strong>
                 <a href="{{ $elearn->Link }}" target="_blank" class="text-decoration-none text-info">{{ $elearn->Link }}</a>
             </p>
             <p>
-                <strong>Ended At:</strong> 
+                <strong>Ended At:</strong>
                 {{ $elearn->ended_at ? \Carbon\Carbon::parse($elearn->ended_at)->format('Y-m-d H:i') : 'No end date' }}
             </p>
             <p class="mb-4">
-                <strong>Description:</strong> 
+                <strong>Description:</strong>
                 {{ $elearn->Description ?? 'No description available' }}
             </p>
-           
+
+            @if ($elearn->Certificate)
+                <p>
+                    <strong>Certificate:</strong>
+                    <a href="{{ asset('storage/' . $elearn->Certificate) }}" download class="btn btn-success">
+                        Download Certificate
+                    </a>
+                </p>
+            @else
+                <p class="text-muted">No certificate available.</p>
+            @endif
         </div>
     </div>
 </div>
