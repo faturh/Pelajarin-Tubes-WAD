@@ -79,31 +79,6 @@ Route::middleware(['auth', CheckRole::class . ':user'])->group(function () {
     // jobseaker user
     Route::get('/jobseaker', [Jobseaker_Get_Data_Controller::class, 'index'])->name('jobseaker_main');
     Route::get('/Jobseaker/{id}', [Jobseaker_Get_Data_Controller::class, 'show'])->name('halaman_jobseaker');
-
-    // User Profile Routes
-    // View profile
-    Route::get('/yourprofile', function () {
-        $user = Auth::user();
-        return view('profile.yourprofile', compact('user'));
-    })->name('profile.view');
-    
-    // Edit profile
-    Route::get('/yourprofile/edit', function () {
-        $user = Auth::user();
-        return view('profile.edit', compact('user'));
-    })->name('profile.edit');
-
-    // Update profile
-    // Route::post('/yourprofile/update', [UserProfileController::class, 'update'])->name('profile.update');
-    
-    // Delete profile (optional, if you want to add delete functionality)
-    // Route::delete('/yourprofile/delete', [UserProfileController::class, 'destroy'])->name('profile.delete');
-
-
-    // Profil pengguna
-    Route::get('/yourprofile', [ProfileController::class, 'index'])->name('profile.view');
-    Route::get('/yourprofile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::put('/yourprofile/update', [ProfileController::class, 'update'])->name('profile.update');
 });
 
 // Rute Pendaftaran
