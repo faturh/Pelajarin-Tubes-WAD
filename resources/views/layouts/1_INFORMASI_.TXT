@@ -1,2 +1,0 @@
-app.blade.php =  buat layouts tampilan admin 
-newtab_elearn.blade.php = buat layouts tampilan newtab elearn
