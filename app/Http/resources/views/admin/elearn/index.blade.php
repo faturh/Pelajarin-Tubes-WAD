@@ -39,6 +39,7 @@
                     <td>{{ $elearn->Description ?? 'No Description' }}</td>
                     <td>
                         <a href="{{ route('admin.elearning.edit', $elearn) }}" class="btn btn-warning">Edit</a>
+                        
                         <form action="{{ route('admin.elearning.destroy', $elearn->ElearnId) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
