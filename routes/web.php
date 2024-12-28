@@ -79,11 +79,6 @@ Route::middleware(['auth', CheckRole::class . ':user'])->group(function () {
     // jobseaker user
     Route::get('/jobseaker', [Jobseaker_Get_Data_Controller::class, 'index'])->name('jobseaker_main');
     Route::get('/Jobseaker/{id}', [Jobseaker_Get_Data_Controller::class, 'show'])->name('halaman_jobseaker');
-    // Sertifikat user
-    Route::get('/jobseaker', [Jobseaker_Get_Data_Controller::class, 'index'])->name('jobseaker_main');
-    Route::get('/Jobseaker/{id}', [Jobseaker_Get_Data_Controller::class, 'show'])->name('halaman_jobseaker');
-
-    // User Profile
 
     // User Profile Routes
     // View profile
@@ -99,10 +94,10 @@ Route::middleware(['auth', CheckRole::class . ':user'])->group(function () {
     })->name('profile.edit');
 
     // Update profile
-    Route::post('/yourprofile/update', [UserProfileController::class, 'update'])->name('profile.update');
+    // Route::post('/yourprofile/update', [UserProfileController::class, 'update'])->name('profile.update');
     
     // Delete profile (optional, if you want to add delete functionality)
-    Route::delete('/yourprofile/delete', [UserProfileController::class, 'destroy'])->name('profile.delete');
+    // Route::delete('/yourprofile/delete', [UserProfileController::class, 'destroy'])->name('profile.delete');
 
 
     // Profil pengguna
