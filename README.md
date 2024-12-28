@@ -70,7 +70,8 @@ AWS_USE_PATH_STYLE_ENDPOINT=false
 VITE_APP_NAME="${APP_NAME}"
 
 
-    CARA PULL CODE AGAR BISA BERJALAN
+CARA PULL CODE AGAR BISA BERJALAN
+
 composer install
 tambahkan file env code nya ada diatas
 memasukan database di phpmyadmin
