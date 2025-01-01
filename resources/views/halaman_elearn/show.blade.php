@@ -27,7 +27,7 @@
                 <strong>Description:</strong> 
                 {{ $elearn->Description ?? 'No description available' }}
             </p>
-           
+        
         </div>
     </div>
 </div>
